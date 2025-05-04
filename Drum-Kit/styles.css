@@ -17,31 +17,32 @@ footer {
 }
 
 .w {
-
+  background-image: url("/Drum-Kit/images/tom1.png");
 }
 
 .a {
-
+  background-image: url("/Drum-Kit/images/tom2.png");
 }
 
 .s {
-
+  background-image: url("/Drum-Kit/images/tom3.png");
 }
 
 .d {
+  background-image: url("/Drum-Kit/images/tom4.png");
 
 }
 
 .j {
-
+  background-image: url("/Drum-Kit/images/snare.png");
 }
 
 .k {
-
+  background-image: url("/Drum-Kit/images/crash.png");
 }
 
 .l {
-
+  background-image: url("/Drum-Kit/images/kick.png");
 }
 
 .set {

@@ -1,34 +1,39 @@
 
 var gamePattern = [];
 var userClickedPattern = [];
-
 var buttonColors = ["red", "blue", "yellow", "green"];
-
-var randomNumber = nextSequence();
-
+var randomNumber;
 var randomChoosenColor = buttonColors[randomNumber];
+var level = 0;
 
-gamePattern.push(randomChoosenColor);
 
 
 function nextSequence() {
-    return Math.floor(Math.random()*4);
+    randomNumber = Math.floor(Math.random()*4);
+    $("#level-title").text("level " + level);
+    level+=1;
+
 }
-// console.log(gamePattern);
+
+$(document).keypress(function () {
+    nextSequence();
+    $("#level-title").text("level " + level);
+});
+
 
 $(".btn").click(function (event) {
     var self = $(this);
     var id = self.attr("id");
-   playSound(id)
-    userClickedPattern.push(id)
-    self.addClass("pressed");
-    setTimeout(function () {
-        self.removeClass("pressed");
+    playSound(id);
+    animatePress(id);
 
-    }, 100);
+    userClickedPattern.push(id);
+    gamePattern.push(randomChoosenColor);
+
+    
 
     console.log("Clicked Pattern: ", userClickedPattern);
-    // console.log("Game Pattern: ", gamePattern);
+    console.log("Game Pattern: ", gamePattern);
 });
 
 function playSound(sound) {
@@ -36,3 +41,18 @@ function playSound(sound) {
     audio.play();
 }
 
+function animatePress(currentColour) {
+    $("."+currentColour).addClass("pressed");
+    setTimeout(function () {
+        $("."+currentColour).removeClass("pressed");
+
+    }, 100);
+}
+
+function animateGamePress(currentColour) {
+    $("."+currentColour).addClass("game");
+    setTimeout(function () {
+        $("."+currentColour).removeClass("game");
+
+    }, 100);
+}
